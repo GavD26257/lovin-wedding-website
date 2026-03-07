@@ -34,12 +34,15 @@ SECRET_KEY = env('SECRET_KEY', default='u7!-y4k1c6b44q507nr_l+c^12o7ur++cpzyn!$6
 DEBUG = True
 
 # Set to "console" for console output of emails or to "smtp" to send real mails
-MAIL_BACKEND = "console"
+MAIL_BACKEND = "smtp"
 
-ALLOWED_HOSTS = ["my_website_url"]
+ALLOWED_HOSTS = [
+    "https://londonandgavin.com",
+    'localhost'
+]
 CSRF_TRUSTED_ORIGINS = [
-    "http://example.com",
-    'https://127.0.0.1'
+    "https://londonandgavin.com",
+    'https://127.0.0.1',
 ]
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
