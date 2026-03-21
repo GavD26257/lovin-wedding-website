@@ -3,6 +3,27 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+@font-face {
+    font-family: 'Slight';
+    src: url('../fonts/Slight-Regular.woff2') format('woff2'),
+        url('../fonts/Slight-Regular.woff') format('woff'),
+        url('../fonts/Slight-Regular.tff') format('ttf');
+    /*TODO (try to (in case it fixes issue but is also good practice) add backup formats for older browsers*/
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'La Luxes Serif';
+    src: url('../fonts/La_Luxes_Serif.woff2') format('woff2'),
+        url('../fonts/La_Luxes_Serif.woff') format('woff'),
+        url('../fonts/La_Luxes_Serif.ttf') format('ttf');
+    /*TODO (try to (in case it fixes issue but is also good practice) add backup formats for older browsers*/
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 html,
 body {
@@ -12,7 +33,7 @@ body {
 }
 
 body {
-    font-family: Merriweather,'Helvetica Neue',Arial,sans-serif;
+    font-family: 'La Luxes Serif','Helvetica Neue',Arial,sans-serif;
 }
 
 hr {
@@ -38,12 +59,17 @@ a:focus {
 }
 
 h1,
-h2,
 h3,
 h4,
 h5,
-h6 {
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+h6  {
+    font-family: 'La Luxes Serif','Helvetica Neue',Arial,sans-serif;
+}
+
+
+h2
+{
+    font-family: 'Slight','Helvetica Neue',Arial,sans-serif;
 }
 
 p {
@@ -54,7 +80,7 @@ p {
 
 
 .bg-primary {
-    background-color: #f05f40;
+    background-color: rgb(203, 6, 101);
 }
 
 .bg-primary a {
@@ -85,7 +111,7 @@ aside {
 
 .navbar-default {
     border-color: rgba(34,34,34,.05);
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-family: 'La Luxes Serif','Helvetica Neue',Arial,sans-serif;
     background-color: #fff;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
@@ -94,7 +120,7 @@ aside {
 
 .navbar-default .navbar-header .navbar-brand {
     text-transform: uppercase;
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-family: 'La Luxes Serif','Helvetica Neue',Arial,sans-serif;
     font-weight: 700;
     color: rgb(203, 6, 101);
 }
@@ -193,7 +219,7 @@ header {
 }
 
 #main-header {
-    background-image: url('../lg_images/engagement-proposal2.JPG');
+    background-image: url('../lg_images/engagement-proposal2.jpeg');
 }
 
 header .header-content {
@@ -305,11 +331,11 @@ header .header-content .header-content-inner p {
     text-align: center;
     color: #fff;
     opacity: 0;
-    background: rgba(240,95,64,.9);
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
 }
+/* background: rgb(203, 6, 101); */
 
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content {
     position: absolute;
@@ -322,7 +348,7 @@ header .header-content .header-content-inner p {
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
     padding: 0 15px;
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-family: 'La Luxes Serif','Helvetica Neue',Arial,sans-serif;
 }
 
 .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
@@ -354,7 +380,7 @@ header .header-content .header-content-inner p {
 }
 
 .text-primary {
-    color: #f05f40;
+    color: rgb(203, 6, 101);
 }
 
 .no-gutter > [class*=col-] {
@@ -416,9 +442,9 @@ fieldset[disabled] .btn-default.active {
 }
 
 .btn-primary {
-    border-color: #f05f40;
+    border-color: rgb(203, 6, 101);
     color: #fff;
-    background-color: #f05f40;
+    background-color: rgb(203, 6, 101);
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -430,9 +456,9 @@ fieldset[disabled] .btn-default.active {
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
-    border-color: #ed431f;
+    border-color: rgb(203, 6, 101);
     color: #fff;
-    background-color: #ee4b28;
+    background-color: rgb(203, 6, 101);
 }
 
 .btn-primary:active,
@@ -459,12 +485,12 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-    border-color: #f05f40;
-    background-color: #f05f40;
+    border-color: rgb(203, 6, 101);
+    background-color: rgb(203, 6, 101);
 }
 
 .btn-primary .badge {
-    color: #f05f40;
+    color: rgb(203, 6, 101);;
     background-color: #fff;
 }
 
@@ -472,7 +498,7 @@ fieldset[disabled] .btn-primary.active {
     border: 0;
     border-radius: 300px;
     text-transform: uppercase;
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-family: 'La Luxes Serif','Helvetica Neue',Arial,sans-serif;
     font-weight: 700;
 }
 

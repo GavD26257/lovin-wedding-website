@@ -2,12 +2,12 @@
 {% load static %}
 {% block page_head %}
     <!-- Custom CSS -->
-    <link href="{% static 'bigday/css/creative.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'bigday/css/creative.css' %}">
 {% endblock %}
 {% block page_content %}
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
+            <!-- and and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -27,7 +27,7 @@
                         <a class="page-scroll" href="#event">Event</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#jordan-pines">Jordan Pines</a>
+                        <a class="page-scroll" href="#event">Jordan Pines</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#other-stuff">Everything Else</a>
@@ -63,21 +63,20 @@
                     <h2 class="section-heading">Welcome!</h2>
                     <hr>
                     <p>
-                        Hello friends and family! It's the week of the wedding!
+                        Hello friends and family! You're invited to our wedding!
+                    </p>
+                    <p>
+                        We will continue to update and add information to this page over the coming months. So, check back here if you have question, and if they
+                        aren't answered here, feel free to contact us at <a href="mailto:{{ support_email }}">{{ support_email }}</a>.
                     </p>
                     <p>
                         If you're looking for information about the event, look no further!
-                        Please see below for all the details regarding <a href="#event" class="page-scroll">Friday night's welcome party</a> and <a href="#saturday-event" class="page-scroll">Saturday's event</a>.
-                    </p>
-                    <p>
-                        To get added to the wedding whatsapp group first create an account and then send an
-                        email to <a href="mailto:{{ support_email }}">{{ support_email }}</a>.
-                        Also, the current front-runner for the wedding hashtag (if you're into that sort of thing) is #getlukky.
+                        Please see below for all the details regarding <a href="#event" class="page-scroll">Sunday's wedding itinerary</a>.
                     </p>
                     <p>
                         Looking forward to seeing everyone soon!
                     </p>
-                    <p class="pull-right">- Cory and Rowena</p>
+                    <p class="pull-right">- London and Gavin</p>
                 </div>
             </div>
         </div>
@@ -86,32 +85,22 @@
         <div class="container-fluid">
             <div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6">
+                    <!-- <img src="{% static 'bigday/lg_images/glacier-wedding-close.jpeg' %}" class="img-responsive" alt=""> -->
                     <a href="#event" class="portfolio-box page-scroll">
-                        <img src="{% static 'bigday/lg_images/glacier-wedding_close.JPG' %}" class="img-responsive" alt="">
+                        <img src="{% static 'bigday/lg_images/glacier-wedding-close.jpeg' %}" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
-                                    The Event
+                                    Wedding Itinerary
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#jordan-pines" class="portfolio-box page-scroll">
+                    <!-- <img src="{% static 'bigday/lg_images/phiefferhorn.jpeg' %}" class="img-responsive" alt=""> -->
+                    <a href="#event" class="portfolio-box page-scroll">
                         <img src="{% static 'bigday/lg_images/phiefferhorn.jpeg' %}" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-name">
-                                    Jordan Pines
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#story" class="portfolio-box page-scroll">
-                        <img src="{% static 'bigday/lg_images/graduation-little_dell.jpg' %}" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
@@ -121,26 +110,52 @@
                         </div>
                     </a>
                 </div>
+                <div class="col-lg-4 col-sm-6">
+                    <!-- <img src="{% static 'bigday/lg_images/graduation-little_dell.jpeg' %}" class="img-responsive" alt=""> -->
+                    <a href="#story" class="portfolio-box page-scroll">
+                        <img src="{% static 'bigday/lg_images/graduation-little_dell.jpeg' %}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name">
+                                    <!-- FAQs -->
+                                    More Information
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
     
-    <section id="jordan-pines">
-        {% include 'partials/jordan-pines.html' %}
+    {% if ceremony %}
+    <section id="event">
+            {% include 'partials/ceremony.html' %}
     </section>
-{% comment %}
-        {% include 'partials/wedding-party.html' %}
-{% endcomment %}
-    <section id="other-stuff" class="bg-primary">
-        {% include 'partials/misc.html' %}
+    <section class="bg-info">
+        {% include 'partials/reception.html' %}
     </section>
+    {% else %}
+    <section id="event" class="bg-dark">
+        {% include 'partials/reception.html' %}
+    </section>
+    {% endif %}
+
+    {% comment %}
     <section id="gifts">
         {% include 'partials/gifts.html' %}
     </section>
+    {% endcomment %}
+
     <section id="story" class="bg-dark">
         {% include 'partials/story.html' %}
     </section>
     {% include 'partials/proposal.html' %}
+
+    <section id="faqs" class="bg-dark">
+        {% include 'partials/faqs.html' %}
+    </section>
+    
     {% include 'partials/save-the-dates.html' %}
     <section id="contact" class="bg-dark">
         <div class="container">
