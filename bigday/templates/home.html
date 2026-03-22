@@ -17,7 +17,8 @@
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">{{ couple_name }}'s Big Day</a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!-- Collect the nav links, rms, and other content for toggling -->
+            <!-- Collect the nav links, rms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -27,10 +28,10 @@
                         <a class="page-scroll" href="#event">Event</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#event">Jordan Pines</a>
+                        <a class="page-scroll" href="#story">Our Story</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#other-stuff">Everything Else</a>
+                        <a class="page-scroll" href="#faqs">Everything Else</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -91,7 +92,9 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
-                                    Wedding Itinerary
+                                    <strong>
+                                        Wedding Itinerary
+                                    </strong>
                                 </div>
                             </div>
                         </div>
@@ -99,12 +102,14 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <!-- <img src="{% static 'bigday/lg_images/phiefferhorn.jpeg' %}" class="img-responsive" alt=""> -->
-                    <a href="#event" class="portfolio-box page-scroll">
+                    <a href="#story" class="portfolio-box page-scroll">
                         <img src="{% static 'bigday/lg_images/phiefferhorn.jpeg' %}" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
-                                    Our Story
+                                    <strong>
+                                        Our Story
+                                    </strong>
                                 </div>
                             </div>
                         </div>
@@ -112,13 +117,15 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <!-- <img src="{% static 'bigday/lg_images/graduation-little_dell.jpeg' %}" class="img-responsive" alt=""> -->
-                    <a href="#story" class="portfolio-box page-scroll">
+                    <a href="#faqs" class="portfolio-box page-scroll">
                         <img src="{% static 'bigday/lg_images/graduation-little_dell.jpeg' %}" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
-                                    <!-- FAQs -->
-                                    More Information
+                                    <strong>
+                                        <!-- FAQs -->
+                                        More Information
+                                    </strong>
                                 </div>
                             </div>
                         </div>
@@ -156,6 +163,10 @@
         {% include 'partials/faqs.html' %}
     </section>
     
+    <section>
+        {% include 'partials/slideshow.html' %}
+    </section>
+
     {% include 'partials/save-the-dates.html' %}
     <section id="contact" class="bg-dark">
         <div class="container">
