@@ -260,7 +260,9 @@ header .header-content .header-content-inner p {
 }
 
 #second-header {
-    background-image: url('../lg_images/engagement-landscape.JPG');
+    background-image: 
+        url('../lg_images/engagement-landscape.JPG'),
+        url('../lg_images/engagement-landscape.jpeg');
 }
 
 @media(min-width:768px) {
