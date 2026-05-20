@@ -6,13 +6,23 @@ from django.core.mail import EmailMultiAlternatives
 from django.urls import reverse
 from django.http import Http404
 from django.template.loader import render_to_string
-from guests.models import Party, MEALS
+from guests.models import Party, Guest, MEALS
 
 INVITATION_TEMPLATE = 'guests/email_templates/invitation.html'
 
 
+def get_invite_id_by_name_or_404(guest_name):
+    try:
+        first_name, last_name = guest_name.split()
+        guest = Guest.objects.get(first_name=first_name, last_name=last_name)
+        return guest.party.invitation_id
+    except:
+        raise Http404()
+
 def guess_party_by_invite_id_or_404(invite_id):
     try:
+        # if invite_id == 0:
+        #     return Party.objects.get(invitation_id=-1)
         return Party.objects.get(invitation_id=invite_id)
     except Party.DoesNotExist:
         if settings.DEBUG:

@@ -17,7 +17,6 @@
     src: url('../fonts/Slight-Regular.woff2') format('woff2'),
         url('../fonts/Slight-Regular.woff') format('woff'),
         url('../fonts/Slight-Regular.tff') format('ttf');
-    /*TODO (try to (in case it fixes issue but is also good practice) add backup formats for older browsers*/
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -54,7 +53,6 @@ hr.light {
     border-color: var(--primary-white);
 }
 
-/* TODO change color */
 a {
     color: var(--highlight); 
     -webkit-transition: all .35s;
@@ -62,7 +60,6 @@ a {
     transition: all .35s;
 }
 
-/* TODO change color */
 a:hover,
 a:focus {
     color: var(--highlight);
@@ -93,7 +90,6 @@ p {
     background-color: var(--highlight);
 }
 
-/* TODO change color ? */
 .bg-primary a {
     color: var(--primary-white);
     font-weight: bold;
@@ -208,7 +204,6 @@ aside {
     }
 
 
-    /* TODO color of nav links -- dark-blue or charcoal???? */
     .navbar-default.affix .nav > li>a,
     .navbar-default.affix .nav>li>a:focus {
         color: var(--dark-text);
@@ -221,7 +216,6 @@ aside {
     }
 }
 
-/* TODO color of nav header -- dark-blue or charcoal???? */
 header {
     position: relative;
     width: 100%;

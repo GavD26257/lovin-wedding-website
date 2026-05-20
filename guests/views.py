@@ -6,12 +6,12 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.db.models import Count, Q
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.views.generic import ListView
 from guests import csv_import
-from guests.invitation import get_invitation_context, INVITATION_TEMPLATE, guess_party_by_invite_id_or_404, \
-    send_invitation_email
+from guests.invitation import get_invitation_context, INVITATION_TEMPLATE, get_invite_id_by_name_or_404, \
+    guess_party_by_invite_id_or_404, send_invitation_email
 from guests.models import Guest, MEALS, Party
 from guests.save_the_date import get_save_the_date_context, send_save_the_date_email, SAVE_THE_DATE_TEMPLATE, \
     SAVE_THE_DATE_CONTEXT_MAP
@@ -66,12 +66,35 @@ def dashboard(request):
     })
 
 
+
+def rsvp(request):
+    if request.method == 'POST':
+        guest_name = request.POST.get('guest_name')
+        try:
+            invite_id = get_invite_id_by_name_or_404(guest_name=guest_name)
+        except Http404:
+            print("FAILED TO FIND INVITE BY NAME")
+            return render(request, template_name='guests/rsvp.html', context={
+                'couple_name' : settings.BRIDE_AND_GROOM,
+                'website_url': settings.WEDDING_WEBSITE_URL,   
+                'error': 'Sorry! We could not find that name in the invite list. \
+                    Check for any spelling errors or reach out to us if you continue to have issues!'
+            })
+        print(invite_id)
+        return HttpResponseRedirect(reverse('invitation', args=[invite_id]))
+
+    return render(request, template_name='guests/rsvp.html', context={
+        'couple_name' : settings.BRIDE_AND_GROOM,
+        'website_url': settings.WEDDING_WEBSITE_URL,        
+    })
+
 def invitation(request, invite_id):
     party = guess_party_by_invite_id_or_404(invite_id)
-    if party.invitation_opened is None:
-        # update if this is the first time the invitation was opened
-        party.invitation_opened = datetime.utcnow()
-        party.save()
+    # TODO uncomment this block
+    # if party.invitation_opened is None:
+    #     # update if this is the first time the invitation was opened
+    #     party.invitation_opened = datetime.datetime()
+    #     party.save()
     if request.method == 'POST':
         for response in _parse_invite_params(request.POST):
             guest = Guest.objects.get(pk=response.guest_pk)

@@ -5,13 +5,10 @@ import uuid
 from django.db import models
 from django.dispatch import receiver
 
-# these will determine the default formality of correspondence
 ALLOWED_TYPES = [
-    ('formal', 'formal'),
-    ('fun', 'fun'),
-    ('dimagi', 'dimagi'),
+    ('ceremony', 'ceremony'),
+    ('reception', 'reception'),
 ]
-
 
 def _random_uuid():
     return uuid.uuid4().hex
@@ -70,6 +67,7 @@ class Guest(models.Model):
     first_name = models.TextField()
     last_name = models.TextField(null=True, blank=True)
     email = models.TextField(null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
     is_attending = models.BooleanField(default=None, null=True)
     meal = models.CharField(max_length=20, choices=MEALS, null=True, blank=True)
     is_child = models.BooleanField(default=False)
