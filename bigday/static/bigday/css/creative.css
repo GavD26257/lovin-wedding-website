@@ -32,6 +32,22 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Montserrat\,Raleway\,Spectral/Raleway/Raleway-Italic-VariableFont_wght.ttf');
+    font-weight: 450;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Spectral';
+    src: url('../fonts/Montserrat,Raleway,Spectral/Spectral/Spectral-MediumItalic.ttf');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
 html,
 body {
     width: 100%;
@@ -40,7 +56,7 @@ body {
 }
 
 body {
-    font-family: 'La Luxes Serif','Helvetica Neue',Arial,sans-serif;
+    font-family: 'Raleway','Helvetica Neue',Arial,sans-serif;
 }
 
 hr {

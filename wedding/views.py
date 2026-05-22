@@ -1,5 +1,7 @@
 from django.conf import settings
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from guests.save_the_date import SAVE_THE_DATE_CONTEXT_MAP
 
 
@@ -15,6 +17,8 @@ def home(request):
     })
 
 def ceremony(request):
+    if request.method == 'POST':
+        return HttpResponseRedirect(reverse('rsvp'))
     return render(request, 'home.html', context={
         'save_the_dates': SAVE_THE_DATE_CONTEXT_MAP,
         'support_email': settings.DEFAULT_WEDDING_REPLY_EMAIL,
@@ -26,6 +30,8 @@ def ceremony(request):
     })
 
 def reception(request):
+    if request.method == 'POST':
+        return HttpResponseRedirect(reverse('rsvp'))
     return render(request, 'home.html', context={
         'save_the_dates': SAVE_THE_DATE_CONTEXT_MAP,
         'support_email': settings.DEFAULT_WEDDING_REPLY_EMAIL,
