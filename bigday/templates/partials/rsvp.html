@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_head %}
+    <link href="{% static 'bigday/css/invitation.css' %}" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
+{% endblock %}
+{% block page_content %}
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- and and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">{{ couple_name }}'s Big Day</a>
+        </div>
+        <!-- Collect the nav links, rms, and other content for toggling -->
+        <!-- Collect the nav links, rms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="#main-header">Home</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#rsvp">RSVP</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#event">Event</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#story">Our Story</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#faqs">Everything Else</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<div class="container" id="invitation-body">
+    
+    <section class="col-md-6 text-center">
+        <div id="invitation-details">
+        <h2>London and Gavin Wedding</h2>
+        <p class="lead">
+            July 26, 2026<br>
+            Salt Lake City, UT, United States
+        </p>
+        </div>
+    </section>
+
+    <section class="col-md-6">
+        <form data-toggle="validator" id="invitation-details" class="form-horizontal" method="post"> <!--TODO change functionality of form/button-->
+            <h2 id="rsvp-header" class="text-center">RSVP</h2>
+            <h3 id="rsvp-header" class="text-center">Search for your party:</h3>
+            <div class="clearfix"></div>
+            {% csrf_token %}
+            <div class="form-group col-sm-12">
+                <input type="text" name="guest_name" class="form-control" placeholder="Enter your full name" >
+            </div>
+            {% if error %} <div class="form-group col-sm-12">{{error}}</div> {% endif %}
+            <div class="form-group">
+                <div class="text-center">
+                    <input type="submit" class="btn btn-primary" value="Search" /> 
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+
+{% endblock %}

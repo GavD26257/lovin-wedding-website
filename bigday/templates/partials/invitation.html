@@ -7,7 +7,7 @@
     
 <div class="container" id="invitation-body">
     
-    <section class="text-center col-12" id="search">
+    <section class="text-center col-md-6" id="search">
         <div id="invitation-details">
         <h2>London and Gavin Wedding</h2>
         <p class="lead">
@@ -24,15 +24,15 @@
         </div>
     </section>
 
-    <section class="col-12">
+    <section class="col-md-6">
     <form data-toggle="validator" id="invitation-details" class="form-horizontal" method="post">
         <h2 id="rsvp-header" class="text-center">RSVP</h2>
         <div class="clearfix"></div>
         {% csrf_token %}
         {% for guest in party.ordered_guests.all %}
-            <div class="form-group text-center" data-is-child="{{ guest.is_child }}">
+            <div class="form-group" data-is-child="{{ guest.is_child }}">
                 {% with 'attending-'|add:guest.unique_id as attending_label %}
-                    <label for="{{ attending_label }}" class="control-label">{{ guest.name }}</label>
+                    <label for="{{ attending_label }}" class="col-sm-3 control-label">{{ guest.name }}</label>
                     <label class="radio-inline">
                         <input class="attending-radio" type="radio" name="{{ attending_label }}" value="yes" {% if guest.is_attending %}checked="checked"{% endif %} required> will attend
                     </label>
@@ -42,7 +42,7 @@
                 {% endwith %}
             </div>
         {% endfor %}
-        <div class="form-group">
+        <div class="form-group col-sm-12">
             <input type="text" name="comments" class="form-control" placeholder="Questions/comments/well wishes" >
         </div>
         <div class="form-group">

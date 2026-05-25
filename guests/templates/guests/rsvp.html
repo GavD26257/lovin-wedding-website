@@ -6,7 +6,7 @@
 {% block page_content %}
 <div class="container" id="invitation-body">
     
-    <section class="col-md-6 text-center">
+    <section class="text-center col-12">
         <div id="invitation-details">
         <h2>London and Gavin Wedding</h2>
         <p class="lead">
@@ -16,7 +16,7 @@
         </div>
     </section>
 
-    <section class="col-md-6">
+    <section class="col-12">
         <form data-toggle="validator" id="invitation-details" class="form-horizontal" method="post"> <!--TODO change functionality of form/button-->
             <h2 id="rsvp-header" class="text-center">RSVP</h2>
             <h3 id="rsvp-header" class="text-center">Search for your party:</h3>
@@ -25,11 +25,7 @@
             <div class="form-group col-sm-12">
                 <input type="text" name="guest_name" class="form-control" placeholder="Enter your full name" >
             </div>
-            {% if error %}
-                <div class="form-group col-sm-12">
-                    {{error}}
-                </div>
-            {% endif %}
+            {% if error %} <div class="form-group col-sm-12">{{error}}</div> {% endif %}
             <div class="form-group">
                 <div class="text-center">
                     <input type="submit" class="btn btn-primary" value="Search" /> 

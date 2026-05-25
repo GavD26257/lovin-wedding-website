@@ -1,4 +1,13 @@
-.responsive-video {
+:root {
+    --primary-white: #fff;
+    --secondary-white: #d1d1d1;
+    --primary-black: #222;
+    --highlight: rgb(203, 6, 101);
+    --dark-text: #343434;
+}
+
+
+/* .responsive-video {
     position: relative;
     padding-bottom: 56.25%;
     padding-top: 60px; overflow: hidden;
@@ -16,13 +25,131 @@
 }
 
 .video-container {
-    background-color: #000000;
+    background-color: var(--primary-black);
     padding: 2em;
     margin-top: 2em;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
     opacity: 1.0;
+} */
+
+.btn-default {
+    border-color: var(--primary-white);
+    color: var(--primary-black);
+    background-color: var(--primary-white);
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default.focus,
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    border-color: var(--secondary-white);
+    color: var(--primary-black);
+    background-color: var(--primary-white);
+}
+
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    background-image: none;
+}
+
+.btn-default.disabled,
+.btn-default[disabled],
+fieldset[disabled] .btn-default,
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled.focus,
+.btn-default[disabled].focus,
+fieldset[disabled] .btn-default.focus,
+.btn-default.disabled:active,
+.btn-default[disabled]:active,
+fieldset[disabled] .btn-default:active,
+.btn-default.disabled.active,
+.btn-default[disabled].active,
+fieldset[disabled] .btn-default.active {
+    border-color: var(--primary-white);
+    background-color: var(--primary-white);
+}
+
+.btn-default .badge {
+    color: var(--primary-white);
+    background-color: var(--primary-black);
+}
+
+.btn-primary {
+    border-color: var(--highlight);
+    color: var(--primary-white);
+    background-color: var(--highlight);
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+    border-color: var(--highlight);
+    color: var(--primary-white);
+    background-color: var(--primary-black);
+}
+
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+    background-image: none;
+}
+
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+    border-color: var(--highlight);
+    background-color: var(--highlight);
+}
+
+.btn-primary .badge {
+    color: var(--highlight);
+    background-color: var(--primary-white);
+}
+
+.btn {
+    border: 0;
+    border-radius: 300px;
+    text-transform: uppercase;
+    font-family: 'Raleway','Helvetica Neue',Arial,sans-serif;
+    font-weight: 700;
+}
+
+.btn-xl {
+    padding: 15px 30px;
 }
 
 #invitation-details, #rsvp-form {
@@ -32,10 +159,21 @@
     -moz-border-radius: 10px;
     border-radius: 10px;
     border: .2em solid grey;
+    display: flex;
+    flex-direction: column;
 }
 
+.form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    margin: 5px 10px;
+}
+
+
 body {
-    background: url('../images/invite-background.jpg') no-repeat center center fixed;
+    background: url('../lg_images/engagement-landscape.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -43,7 +181,7 @@ body {
 }
 
 #invitation-body {
-    background-color: #fff;
+    background-color: var(--primary-white);
     padding-bottom: 2em;
     margin-top: 1em;
     margin-bottom: 2em;

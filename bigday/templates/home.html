@@ -98,7 +98,7 @@
                                     <strong>
                                         Wedding Itinerary
                                     </strong>
-                                </div>F
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -137,15 +137,17 @@
             </div>
         </div>
     </section>
+    <!--TODO include rsvp functionality here/in main page-->
     <section class="bg-dark" id="rsvp">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <h2 class="section-heading text-center">RSVP</h2>
                     <hr class="primary">
-                    <form data-toggle="validator" id="rsvp-request" class="form-horizontal" method="post">
+                    <form data-toggle="validator" id="rsvp-form" class="form-horizontal" method="post">
                         {% csrf_token %}
-                        <button>RSVP Here</button>
+                        <p>Kindly reply by June 26</p>
+                        <button class="btn btn-primary" id="rsvp-button">RSVP Here</button>
                     </form>
                 </div>
             </div>
