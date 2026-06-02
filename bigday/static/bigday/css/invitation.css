@@ -1,9 +1,10 @@
 :root {
-    --primary-white: #fff;
+    --primary-white: rgb(255, 255, 255);
     --secondary-white: #d1d1d1;
     --primary-black: #222;
     --highlight: rgb(203, 6, 101);
     --dark-text: #343434;
+    --primary-white-transparent: rgba(255, 255, 255, 0.7);
 }
 
 
@@ -181,7 +182,7 @@ body {
 }
 
 #invitation-body {
-    background-color: var(--primary-white);
+    background-color: var(--primary-white-transparent);
     padding-bottom: 2em;
     margin-top: 1em;
     margin-bottom: 2em;
