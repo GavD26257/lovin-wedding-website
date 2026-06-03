@@ -38,15 +38,16 @@ DEBUG = False
 MAIL_BACKEND = "smtp"
 
 ALLOWED_HOSTS = [
-    "https://londonandgavin.com",
-    "https://www.londonandgavin.com",
-    "https://lovin-wedding-website.onrender.com",
+    "londonandgavin.com",
+    "londonandgavin.com",
+    "lovin-wedding-website.onrender.com",
     'localhost',
 ]
 CSRF_TRUSTED_ORIGINS = [
     "https://londonandgavin.com",
     "https://www.londonandgavin.com",
     "https://lovin-wedding-website.onrender.com",
+    "https://www.lovin-wedding-website.onrender.com",
     'https://127.0.0.1',
 ]
 
