@@ -172,6 +172,10 @@ fieldset[disabled] .btn-primary.active {
     margin: 5px 10px;
 }
 
+.guest-input {
+    width: 67%;
+    max-width: 400px;
+}
 
 body {
     background: url('../lg_images/engagement-landscape.jpg') no-repeat center center fixed;
