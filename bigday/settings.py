@@ -39,7 +39,7 @@ MAIL_BACKEND = "smtp"
 
 ALLOWED_HOSTS = [
     "londonandgavin.com",
-    "londonandgavin.com",
+    "www.londonandgavin.com",
     "lovin-wedding-website.onrender.com",
     'localhost',
 ]
