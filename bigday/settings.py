@@ -31,7 +31,8 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('SECRET_KEY', default='u7!-y4k1c6b44q507nr_l+c^12o7ur++cpzyn!$65w^!gum@h%')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+
 
 # Set to "console" for console output of emails or to "smtp" to send real mails
 MAIL_BACKEND = "smtp"
@@ -39,13 +40,13 @@ MAIL_BACKEND = "smtp"
 ALLOWED_HOSTS = [
     "https://londonandgavin.com",
     "https://www.londonandgavin.com",
-    "https://lovin-wedding-website.onrender.com/",
+    "https://lovin-wedding-website.onrender.com",
     'localhost',
 ]
 CSRF_TRUSTED_ORIGINS = [
     "https://londonandgavin.com",
     "https://www.londonandgavin.com",
-    "https://lovin-wedding-website.onrender.com/",
+    "https://lovin-wedding-website.onrender.com",
     'https://127.0.0.1',
 ]
 
