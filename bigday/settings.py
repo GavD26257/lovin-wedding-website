@@ -39,6 +39,7 @@ MAIL_BACKEND = "smtp"
 ALLOWED_HOSTS = [
     "https://londonandgavin.com",
     "https://www.londonandgavin.com",
+    "https://lovin-wedding-website.onrender.com/",
     'localhost'
 ]
 CSRF_TRUSTED_ORIGINS = [
