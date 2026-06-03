@@ -40,11 +40,12 @@ ALLOWED_HOSTS = [
     "https://londonandgavin.com",
     "https://www.londonandgavin.com",
     "https://lovin-wedding-website.onrender.com/",
-    'localhost'
+    'localhost',
 ]
 CSRF_TRUSTED_ORIGINS = [
     "https://londonandgavin.com",
     "https://www.londonandgavin.com",
+    "https://lovin-wedding-website.onrender.com/",
     'https://127.0.0.1',
 ]
 
