@@ -14,7 +14,7 @@ INVITATION_TEMPLATE = 'guests/email_templates/invitation.html'
 def get_invite_id_by_name_or_404(guest_name):
     try:
         first_name, last_name = guest_name.split()
-        guest = Guest.objects.get(first_name=first_name, last_name=last_name)
+        guest = Guest.objects.get(first_name__iexact=first_name, last_name__iexact=last_name)
         return guest.party.invitation_id
     except:
         raise Http404()

@@ -77,7 +77,7 @@ def rsvp(request):
                 'couple_name' : settings.BRIDE_AND_GROOM,
                 'website_url': settings.WEDDING_WEBSITE_URL,   
                 'error': 'Sorry! We could not find that name in the invite list. \
-                    Check for any spellinutcnowg errors or reach out to us if you continue to have issues!'
+                    Check for any spelling errors or reach out to us if you continue to have issues!'
             })
         return HttpResponseRedirect(reverse('invitation', args=[invite_id]))
 
