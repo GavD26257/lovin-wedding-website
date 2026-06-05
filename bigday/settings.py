@@ -163,16 +163,21 @@ STATICFILES_STORAGE = (
 
 # Some default values. Will be overwritten by a localsetting.py (rename 'localsettings.py.template' to 'localsettings.py')
 # This is used in a few places where the names of the couple are used
-BRIDE_AND_GROOM = 'Bride and Groom'
-# the date of your wedding
-WEDDING_DATE = 'January 1st, 1969'
+# your names
+BRIDE_AND_GROOM = 'London and Gavin'
 # the location of your wedding
-WEDDING_LOCATION = 'North Pole, USA'
-# This is used in links in save the date / invitations
-WEDDING_WEBSITE_URL = 'https://thehappycouple.com'
-# base address for all emails
-DEFAULT_WEDDING_EMAIL = 'happilyeverafter@example.com'
-WEDDING_CC_LIST = [] 
+WEDDING_LOCATION = 'Jordan Pines Campground'
+# the date of your wedding
+WEDDING_DATE = 'July 26th, 2026'
+# this is used in links in save the date / invitations
+WEDDING_WEBSITE_URL = 'https://londonandgavin.com'
+
+DEFAULT_WEDDING_EMAIL = 'londonandgavin@gmail.com'
+DEFAULT_WEDDING_REPLY_EMAIL = 'londonandgavin@gmail.com'
+# put email addresses here if you want to cc someone on all your invitations
+WEDDING_CC_LIST = []
+
+
 
 # Checks, if the 'localsettings.py' is present and set some couple variables
 # which are used in a few places.
