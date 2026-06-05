@@ -88,11 +88,10 @@ def rsvp(request):
 
 def invitation(request, invite_id):
     party = guess_party_by_invite_id_or_404(invite_id)
-    # TODO uncomment this block
-    # if party.invitation_opened is None:
-    #     # update if this is the first time the invitation was opened
-    #     party.invitation_opened = datetime.datetime()
-    #     party.save()
+    if party.invitation_opened is None:
+        # update if this is the first time the invitation was opened
+        party.invitation_opened = datetime.datetime()
+        party.save()
     if request.method == 'POST':
         for response in _parse_invite_params(request.POST):
             guest = Guest.objects.get(pk=response.guest_pk)
