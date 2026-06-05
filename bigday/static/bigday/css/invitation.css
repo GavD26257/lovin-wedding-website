@@ -7,33 +7,23 @@
     --primary-white-transparent: rgba(255, 255, 255, 0.7);
 }
 
-
-/* .responsive-video {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 60px; overflow: hidden;
+@font-face {
+    font-family: 'La Luxes Serif';
+    src: url('../fonts/La_Luxes_Serif.woff2') format('woff2'),
+        url('../fonts/La_Luxes_Serif.woff') format('woff'),
+        url('../fonts/La_Luxes_Serif.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
-
-.responsive-video iframe,
-.responsive-video object,
-.responsive-video embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Montserrat\,Raleway\,Spectral/Raleway/Raleway-Italic-VariableFont_wght.ttf');
+    font-weight: 450;
+    font-style: italic;
+    font-display: swap;
 }
-
-.video-container {
-    background-color: var(--primary-black);
-    padding: 2em;
-    margin-top: 2em;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    opacity: 1.0;
-} */
 
 .btn-default {
     border-color: var(--primary-white);
@@ -177,12 +167,22 @@ fieldset[disabled] .btn-primary.active {
     max-width: 400px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6  {
+    font-family: 'La Luxes Serif','Helvetica Neue',Arial,sans-serif;
+}
+
 body {
     background: url('../lg_images/engagement-landscape.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    font-family: 'Raleway','Helvetica Neue',Arial,sans-serif;
 }
 
 #invitation-body {

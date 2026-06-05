@@ -68,6 +68,8 @@ class Guest(models.Model):
     last_name = models.TextField(null=True, blank=True)
     email = models.TextField(null=True, blank=True)
     address = models.TextField(null=True, blank=True)
+    attending_ceremony = models.BooleanField(default=None, null=True)
+    attending_reception = models.BooleanField(default=None, null=True)
     is_attending = models.BooleanField(default=None, null=True)
     meal = models.CharField(max_length=20, choices=MEALS, null=True, blank=True)
     is_child = models.BooleanField(default=False)
@@ -80,6 +82,10 @@ class Guest(models.Model):
     def unique_id(self):
         # convert to string so it can be used in the "add" templatetag
         return str(self.pk)
+    
+    @property
+    def attending_any(self):
+        return self.attending_ceremony or self.attending_reception
 
     def __str__(self):
         return 'Guest: {} {}'.format(self.first_name, self.last_name)

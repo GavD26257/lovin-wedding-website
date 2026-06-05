@@ -1,12 +1,21 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Montserrat\,Raleway\,Spectral/Raleway/Raleway-Italic-VariableFont_wght.ttf');
+    font-weight: 450;
+    font-style: italic;
+    font-display: swap;
+}
+
 body {
     background: linear-gradient(
       rgba(255, 255, 255, 0.6),
       rgba(255, 255, 255, 0.6)
-    ), url('../images/lions-head-medium.jpg') no-repeat center center fixed;
+    ), url('../lg_images/rippling_brook-cowboy_hats.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    font-family: 'Raleway','Helvetica Neue',Arial,sans-serif;
 }
 
 #main {

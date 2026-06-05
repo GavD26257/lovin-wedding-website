@@ -29,19 +29,44 @@
         <h2 id="rsvp-header" class="text-center">RSVP</h2>
         <div class="clearfix"></div>
         {% csrf_token %}
-        {% for guest in party.ordered_guests.all %}
-            <div class="form-group" data-is-child="{{ guest.is_child }}">
-                {% with 'attending-'|add:guest.unique_id as attending_label %}
-                    <label for="{{ attending_label }}" class="col-sm-3 control-label">{{ guest.name }}</label>
-                    <label class="radio-inline">
-                        <input class="attending-radio" type="radio" name="{{ attending_label }}" value="yes" {% if guest.is_attending %}checked="checked"{% endif %} required> will attend
-                    </label>
-                    <label class="radio-inline">
-                        <input class="attending-radio" type="radio" name="{{ attending_label }}" value="no" {% if guest.is_attending == False %}checked="checked"{% endif %} required> will not attend
-                    </label>
-                {% endwith %}
-            </div>
-        {% endfor %}
+        {% if party.type == 'ceremony' %}
+            {% for guest in party.ordered_guests.all %}
+                <div class="form-group" data-is-child="{{ guest.is_child }}">
+                    {% with 'ceremony-attending-'|add:guest.unique_id as attending_label %}
+                        <label for="{{ attending_label }}" class="col-sm-3 control-label">{{ guest.name }}</label>
+                        <label class="radio-inline">
+                            <input class="attending-radio" type="radio" name="{{ attending_label }}" value="yes" {% if guest.attending_ceremony %}checked="checked"{% endif %} required> will attend ceremony
+                        </label>
+                        <label class="radio-inline">
+                            <input class="attending-radio" type="radio" name="{{ attending_label }}" value="no" {% if guest.attending_ceremony == False %}checked="checked"{% endif %} required> will not attend ceremony
+                        </label>
+                    {% endwith %}
+                    {% with 'reception-attending-'|add:guest.unique_id as attending_label %}
+                        <label for="{{ attending_label }}" class="col-sm-3 control-label">{{ guest.name }}</label>
+                        <label class="radio-inline">
+                            <input class="attending-radio" type="radio" name="{{ attending_label }}" value="yes" {% if guest.attending_reception %}checked="checked"{% endif %} required> will attend reception
+                        </label>
+                        <label class="radio-inline">
+                            <input class="attending-radio" type="radio" name="{{ attending_label }}" value="no" {% if guest.attending_reception == False %}checked="checked"{% endif %} required> will not attend reception
+                        </label>
+                    {% endwith %}
+                </div>
+            {% endfor %}
+        {% else %}
+            {% for guest in party.ordered_guests.all %}
+                <div class="form-group" data-is-child="{{ guest.is_child }}">
+                    {% with 'attending-'|add:guest.unique_id as attending_label %}
+                        <label for="{{ attending_label }}" class="col-sm-3 control-label">{{ guest.name }}</label>
+                        <label class="radio-inline">
+                            <input class="attending-radio" type="radio" name="{{ attending_label }}" value="yes" {% if guest.attending_reception %}checked="checked"{% endif %} required> will attend reception
+                        </label>
+                        <label class="radio-inline">
+                            <input class="attending-radio" type="radio" name="{{ attending_label }}" value="no" {% if guest.attending_reception == False %}checked="checked"{% endif %} required> will not attend reception
+                        </label>
+                    {% endwith %}
+                </div>
+            {% endfor %}
+        {% endif %}
         <div class="form-group col-sm-12">
             <input type="text" name="comments" class="form-control" placeholder="Questions/comments/well wishes" >
         </div>

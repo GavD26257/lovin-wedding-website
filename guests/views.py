@@ -73,14 +73,12 @@ def rsvp(request):
         try:
             invite_id = get_invite_id_by_name_or_404(guest_name=guest_name)
         except Http404:
-            print("FAILED TO FIND INVITE BY NAME")
             return render(request, template_name='guests/rsvp.html', context={
                 'couple_name' : settings.BRIDE_AND_GROOM,
                 'website_url': settings.WEDDING_WEBSITE_URL,   
                 'error': 'Sorry! We could not find that name in the invite list. \
                     Check for any spelling errors or reach out to us if you continue to have issues!'
             })
-        print(invite_id)
         return HttpResponseRedirect(reverse('invitation', args=[invite_id]))
 
     return render(request, template_name='guests/rsvp.html', context={
@@ -99,7 +97,10 @@ def invitation(request, invite_id):
         for response in _parse_invite_params(request.POST):
             guest = Guest.objects.get(pk=response.guest_pk)
             assert guest.party == party
-            guest.is_attending = response.is_attending
+            if guest.party.type == 'ceremony':
+                guest.attending_ceremony = response.attending_ceremony
+            guest.attending_reception = response.attending_reception
+            guest.is_attending = guest.attending_any
             guest.meal = response.meal
             guest.save()
         if request.POST.get('comments'):
@@ -116,16 +117,21 @@ def invitation(request, invite_id):
     })
 
 
-InviteResponse = namedtuple('InviteResponse', ['guest_pk', 'is_attending', 'meal'])
+InviteResponse = namedtuple('InviteResponse', ['guest_pk', 'attending_ceremony', 'attending_reception', 'meal'])
 
 
 def _parse_invite_params(params):
     responses = {}
     for param, value in params.items():
-        if param.startswith('attending'):
+        if param.startswith('ceremony'):
             pk = int(param.split('-')[-1])
             response = responses.get(pk, {})
-            response['attending'] = True if value == 'yes' else False
+            response['attending_ceremony'] = True if value == 'yes' else False
+            responses[pk] = response
+        elif param.startswith('reception'):
+            pk = int(param.split('-')[-1])
+            response = responses.get(pk, {})
+            response['attending_reception'] = True if value == 'yes' else False
             responses[pk] = response
         elif param.startswith('meal'):
             pk = int(param.split('-')[-1])
@@ -134,7 +140,7 @@ def _parse_invite_params(params):
             responses[pk] = response
 
     for pk, response in responses.items():
-        yield InviteResponse(pk, response['attending'], response.get('meal', None))
+        yield InviteResponse(pk, response['attending_ceremony'], response['attending_reception'], response.get('meal', None))
 
 
 def rsvp_confirm(request, invite_id=None):

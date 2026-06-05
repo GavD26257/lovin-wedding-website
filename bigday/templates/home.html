@@ -137,6 +137,7 @@
             </div>
         </div>
     </section>
+
     <section class="bg-dark" id="rsvp">
         <div class="container">
             <div class="row">
@@ -152,6 +153,7 @@
             </div>
         </div>
     </section>
+
     {% if ceremony %}
     <section id="event">
         {% include 'partials/ceremony.html' %}
@@ -165,12 +167,6 @@
     </section>
     {% endif %}
 
-    {% comment %}
-    <section id="gifts">
-        {% include 'partials/gifts.html' %}
-    </section>
-    {% endcomment %}
-
     <section id="story" class="bg-dark">
         {% include 'partials/story.html' %}
     </section>
@@ -180,17 +176,21 @@
         {% include 'partials/faqs.html' %}
     </section>
     
-    <section class="bg-info" id="rsvp">
+    <section class="bg-info" id="registry">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="section-heading text-center">RSVP</h2>
+                    <h2 class="section-heading text-center">Registry</h2>
                     <hr class="primary">
-                    <form data-toggle="validator" id="rsvp-form" class="form-horizontal" method="post">
-                        {% csrf_token %}
-                        <p>Kindly reply by June 26</p>
-                        <button class="btn btn-primary" id="rsvp-button">RSVP Here</button>
-                    </form>
+                    <!-- <form data-toggle="validator" id="registry-form" class="form-horizontal" method="post"> -->
+                        <!-- {% csrf_token %} -->
+                         <div id="registry-content">
+                            <p>We couldn't decide on where to register...so we chose one that essentially allowed us do all of them at once.</p>
+                            <p>Please reach out if you have any trouble viewing any items!</p>
+                            <a class="btn btn-primary" id="registry-button" href="https://www.zola.com/registry/gavinandlondon" target="_blank">View Registry</a>
+                        <div id="registry-content">
+
+                    <!-- </form> -->
                 </div>
             </div>
         </div>
