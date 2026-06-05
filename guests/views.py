@@ -1,7 +1,7 @@
 import base64
 from collections import namedtuple
 import random
-from datetime import datetime
+from datetime import datetime, UTC
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -77,7 +77,7 @@ def rsvp(request):
                 'couple_name' : settings.BRIDE_AND_GROOM,
                 'website_url': settings.WEDDING_WEBSITE_URL,   
                 'error': 'Sorry! We could not find that name in the invite list. \
-                    Check for any spelling errors or reach out to us if you continue to have issues!'
+                    Check for any spellinutcnowg errors or reach out to us if you continue to have issues!'
             })
         return HttpResponseRedirect(reverse('invitation', args=[invite_id]))
 
@@ -90,7 +90,7 @@ def invitation(request, invite_id):
     party = guess_party_by_invite_id_or_404(invite_id)
     if party.invitation_opened is None:
         # update if this is the first time the invitation was opened
-        party.invitation_opened = datetime.datetime()
+        party.invitation_opened = datetime.now(UTC)
         party.save()
     if request.method == 'POST':
         for response in _parse_invite_params(request.POST):
