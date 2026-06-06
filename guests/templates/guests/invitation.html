@@ -25,13 +25,13 @@
     </section>
 
     <section class="col-12">
-    <form data-toggle="validator" id="invitation-details" class="form-horizontal" method="post">
+    <form  id="invitation-details" class="form-horizontal" method="post">
         <h2 id="rsvp-header" class="text-center">RSVP</h2>
         <div class="clearfix"></div>
         {% csrf_token %}
         {% if party.type == 'ceremony' %}
             {% for guest in party.ordered_guests.all %}
-                <div class="form-group" data-is-child="{{ guest.is_child }}">
+                <div class="form-group">
                     {% with 'ceremony-attending-'|add:guest.unique_id as attending_label %}
                         <div class=" col-md-6 border-end">
                             <label for="{{ attending_label }}" class="col-sm-3 control-label">{{ guest.name }}</label>
@@ -57,9 +57,9 @@
             {% endfor %}
         {% else %}
             {% for guest in party.ordered_guests.all %}
-                <div class="form-group" data-is-child="{{ guest.is_child }}">
-                    {% with 'attending-'|add:guest.unique_id as attending_label %}
-                        <label for="{{ attending_label }}" class="col-sm-3 control-label">{{ guest.name }}</label>
+                <div class="form-group">
+                    {% with 'reception-attending-'|add:guest.unique_id as attending_label %}
+                        <label for="{{ attending_label }}" class="col-m-2 control-label">{{ guest.name }}</label>
                         <label class="radio-inline">
                             <input class="attending-radio" type="radio" name="{{ attending_label }}" value="yes" {% if guest.attending_reception %}checked="checked"{% endif %} required> will attend reception
                         </label>
@@ -71,7 +71,7 @@
             {% endfor %}
         {% endif %}
         <div class="form-group">
-                <input type="text" name="guest_name" class="form-control guest-input" placeholder="Questions/comments/well wishes" >
+                <input type="text" name="comments" class="form-control guest-input" placeholder="Questions/comments/well wishes" >
         </div>
         <div class="form-group">
             <div class="text-center">
@@ -96,20 +96,6 @@
             var value = target.attr('value');
             var mealButtonContainer = target.closest('.form-group').next('.form-group');
             var mealButtons = mealButtonContainer.find('[type=radio]');
-            if (value === 'yes') {
-                mealButtonContainer.removeClass('text-muted');
-                mealButtons.each(function (index, button) {
-                    button.disabled = false;
-                    button.required = true;
-                });
-            } else if (value === "no") {
-                mealButtonContainer.addClass('text-muted');
-                mealButtons.each(function (index, button) {
-                    button.checked = false;
-                    button.disabled = true;
-                    button.required = false;
-                });
-            }
             // reload validation
             $(document.forms[0]).validator('destroy');
             $(document.forms[0]).validator();

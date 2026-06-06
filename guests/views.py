@@ -1,7 +1,8 @@
 import base64
 from collections import namedtuple
 import random
-from datetime import datetime, UTC
+from datetime import datetime
+import zoneinfo
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -90,7 +91,7 @@ def invitation(request, invite_id):
     party = guess_party_by_invite_id_or_404(invite_id)
     if party.invitation_opened is None:
         # update if this is the first time the invitation was opened
-        party.invitation_opened = datetime.now(UTC)
+        party.invitation_opened = datetime.now(zoneinfo.ZoneInfo('America/Denver'))
         party.save()
     if request.method == 'POST':
         for response in _parse_invite_params(request.POST):
@@ -121,18 +122,24 @@ InviteResponse = namedtuple('InviteResponse', ['guest_pk', 'attending_ceremony',
 
 def _parse_invite_params(params):
     responses = {}
+    ceremony = False
     for param, value in params.items():
         if param.startswith('ceremony'):
             pk = int(param.split('-')[-1])
+            ceremony = True
             response = responses.get(pk, {})
             response['attending_ceremony'] = True if value == 'yes' else False
             responses[pk] = response
-        elif param.startswith('reception'):
+        if param.startswith('reception'):
             pk = int(param.split('-')[-1])
             response = responses.get(pk, {})
             response['attending_reception'] = True if value == 'yes' else False
+            if not ceremony:
+                print("NON CEREMONY")
+                response['attending_ceremony'] = False
+                print(response['attending_ceremony'])
             responses[pk] = response
-        elif param.startswith('meal'):
+        if param.startswith('meal'):
             pk = int(param.split('-')[-1])
             response = responses.get(pk, {})
             response['meal'] = value
